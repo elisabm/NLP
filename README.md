@@ -38,6 +38,8 @@ In this case I used the 'en_core_web_sm' model that SpaCy already has. In my run
 
 To solve this situation we show the model new data so it can learn new things to tag. This chosen dataset contains 161,297 entries of different reviews about medicines. What we want is to teach the model the medicines mentioned in the dataset, in order for it to tag them properly. 
 
+**NOTE: the training and test csv are found in the Releases section of the repo**
+
 First step is creating data that SpaCy can recieve, meaning we need to transform the dataset to the following format: 
 
 array that contains the text and the entities mentioning where they begin and where they end plus the tag. 
