@@ -1,19 +1,33 @@
+# Great work! your README is really complete and thorough. :) 
+# I would possibly put more detailed instructions on how to manage+name the api keys into the README for task 3.
 
-#First Task: Out of the Box Sentiment Analysis 
+
+
+# Re: Code structuring: 
+# the imports should all be at the top 
+
+# the tasks should be separated into methods and/or classes!
+# it's a really bad idea to have all your code just running at the top level without classes or methods to structure it, for a variety of reasons, including readability :) 
+# see this for example classes: https://stackoverflow.com/questions/54476248/python-code-structure-for-class-organization#:~:text=Python%20classes%20provide%20all%20the,class%20with%20the%20same%20name.
+
+# Need to add tests! 
+# In general, writing tests as you code will really help. every time I finish writing a class, I immediately write some tests to make sure that it functions as expected and I often catch bugs that way! 
+
+# First Task: Out of the Box Sentiment Analysis 
 
 from transformers import pipeline
 
-#I used a model that I found on HugginFace, according to it's documentation the model is really effective
+# I used a model that I found on HuggignFace, according to its documentation the model is really effective
 
 model = pipeline('sentiment-analysis',model="siebert/sentiment-roberta-large-english")
 
 with open('tiny_movie_reviews_dataset.txt') as f:
    lines = f.readlines()
 
-#Printing my results 
+# Printing my results 
 
 for line in lines:
-    var = model(line)
+    var = model(line) # give this a more descriptive name like result 
     print (var[0]['label']) 
     
 
@@ -41,27 +55,26 @@ drugs = data_train['drugName'].value_counts().index.tolist()
 
 nlp=spacy.load('en_core_web_sm')
 
-count = 0
 
-for sentence in data_train['review']:
-  if count <= 10:
+# for example, this can be a method called "train" within a class called NERTrainer or something like that 
+for count, sentence in enumerate(data_train['review']): 
+  if count < 10:
+    break
       
-      doc = nlp(sentence)
-      entities=[]
+  doc = nlp(sentence)
+  entities=[]
       
-      for word in doc.ents:
-        if word.label_ not in ['DATE','ORDINAL','CARDINAL', 'TIME']:
-          entities.append((word.text, word.label_))
-          
-      count +=1
-      
-      print(entities)
+  for word in doc.ents:
+     if word.label_ not in ['DATE','ORDINAL','CARDINAL', 'TIME']:
+     entities.append((word.text, word.label_))
+                
+   print(entities)
 
 #It doesn't tag the drugs correctly because it is not trained for that
 
 
-#I am creating a function that creates a new senteces just using alphanumeric characters in lowercase son it doesn't mess with the model
-def newreview(review):
+#I am creating a function that creates a new sentences just using alphanumeric characters in lowercase son it doesn't mess with the model
+def newreview(review): # call this create_new_review
     new_review = []
 
     for token in review.split():
@@ -81,7 +94,7 @@ TRAIN_DATA = []
 #REMINDER: Dataset has 161,297 entries  
 
 
-PERCENT_OF_DATASET_TO_TRAIN = 0.2 #Change so it doesn't take that long
+PERCENT_OF_DATASET_TO_TRAIN = 0.2 #Change so it doesn't take that long. # all these constants should be at the top of the file! https://peps.python.org/pep-0008
 
 sample = len(data_train)*PERCENT_OF_DATASET_TO_TRAIN
 
@@ -114,7 +127,7 @@ for _, item in data_train.iterrows():
         count+=1
 
 
-#Next I create function that trains our model
+# Next I create function that trains our model
 
 def train(n_iterations):
     
@@ -172,15 +185,16 @@ def train(n_iterations):
   return(nlp)
 
 
-nlp = train(30) # I used 30 iterations
+nlp = train(30) # I used 30 iterations # make this a constant at the top of the file! 
 nlp.to_disk('drugs_model')
 
 
 data_test = pd.read_csv('drugsTest.csv').fillna('') #The test dataset
 
-test_reviews = data_test.iloc[-10:, :]['review']
+test_reviews = data_test.iloc[-10:, :]['review'] # make this -10 a constant at the top of the file 
 
-#A funcion that  will print the parragraph and the entity that it found
+#A function that will print the paragraph and the entity that it found
+# make this into a named function :) 
 for review in test_reviews:
     
     review = newreview(review)
@@ -256,7 +270,7 @@ list_of_google_references = [results_google]
 list_of_baidu_references = [results_baidu]
 list_of_hypotheses = [results_eng] # list of hypotheses that corresponds to list of references.
 
-chencherry = SmoothingFunction()
+chencherry = SmoothingFunction() # this seems unused?
 
 
 google_score =nltk.translate.bleu_score.corpus_bleu(es_to_en_google, eng, smoothing_function=chencherry.method1,weights=(0.25, 0.25, 0.25, 0.25))
