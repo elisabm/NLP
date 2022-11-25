@@ -8,7 +8,7 @@ This project is separated into three realistic tasks within the NLP universe. La
 
 Sentiment analysis is a NLP technique that is used to determine whether data has a positive or negative sentiment. Sentiment analysis focuses on the polarity of a text but it also can detect specific feelings and emotions, urgency and intentions.
 
-In this task we are trying to determine whether a certain movie review has a positive or a negative sentiment. To do this 'siebert/sentiment-roberta-large-english' model from HuggingFace. We are only printing the result of the analysis (POSITIVE or NEGATIVE).
+In this task we are trying to determine whether a certain movie review has a positive or a negative sentiment. To do this I will be using the 'siebert/sentiment-roberta-large-english' model from HuggingFace. Here I am only printing the result of the analysis (POSITIVE or NEGATIVE).
 
 The results of the code print out the following:
 <p align="center">
@@ -23,11 +23,11 @@ Named entity recognition (NER) is a sub-task of information extraction (IE) that
 
 For this task, I decided to use an open-source library called SpaCy. SpaCy is used for advanced NLP in python, it helps build applications that process and “understand” large volumes of text.
 
-SpaCy provides efficient statistical system for NER in python, which can assign labels to groups of tokens which are contiguous. It provides a default model which can recognize a wide range of named or numerical entities, which include person, organization, language, event etc. It is important to mention that apart from these default entities, spaCy also gives the liberty to add arbitrary classes to the NER model, by training the model to update it with newer trained examples. This trait of SpaCy is what we are going to use in the project.
+SpaCy provides efficient statistical system for NER in python, which can assign labels to groups of tokens which are contiguous. It provides a default model which can recognize a wide range of named or numerical entities, which include person, organization, language, event etc. It is important to mention that apart from these default entities, spaCy also gives the liberty to add arbitrary classes to the NER model, by training the model to update it with newer trained examples. This trait of SpaCy is what I am going to use in the project.
 
-The main goal in this task is to use an already trained model and train it further, so in order to achive that we are going to choose a model and a dataset that has information new to our model. 
+The main goal in this task is to use an already trained model and train it further, so in order to achieve that, I am going to choose a model and a dataset that has information new to our model. 
 
-In this case I used the 'en_core_web_sm' model that SpaCy already has. In my run.py I had added a little section that tries to use our model in the data. And we can observe that it doen't tag the things correctly, like seen below:
+In this case I used the 'en_core_web_sm' model that SpaCy already has. In my run.py I added a little section that tries to use our model in the data. And we can observe that it doen't tag the things correctly, like seen below:
 
 <p align="center">
   
@@ -56,11 +56,11 @@ Here we print our training loss with the number of iterations. With the whole da
 </p>
 
 
-Finally we try it in new data (there is a specific dataset for that), the result is going to print something like this:
+Finally we try it in new data (there is a specific dataset for that), the result is going to print the review that contained a word that was tagged ,also how many reviews our model tagged within this new dataset, and finally ow accurate this tags were, this is the example of how it looks:
 
 <p align="center">
   
- <img  src="">
+ <img  src="https://user-images.githubusercontent.com/112834283/204061043-0ecc9d9a-f3de-4221-a7d4-5702b6b1866e.png">
   
 </p>
 
