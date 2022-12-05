@@ -60,9 +60,10 @@ Finally we try it in new data (there is a specific dataset for that), the result
 
 <p align="center">
   
- <img  src="https://user-images.githubusercontent.com/112834283/204061043-0ecc9d9a-f3de-4221-a7d4-5702b6b1866e.png">
+ <img  src="https://user-images.githubusercontent.com/112834283/205547240-874ca181-0840-4721-ac93-7d0eb3487000.png">
   
 </p>
+
 
 It is a sentence and our model found a medicine and tagged it correctly. 
 
